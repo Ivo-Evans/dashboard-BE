@@ -8,6 +8,9 @@ const todoModels = {
     },
     postTodo: ({users_id, todo, completed = false}) => {
         return db.query("INSERT INTO todos(users_id, todo, completed) VALUES($1, $2, $3)", [users_id, todo, completed])
+    },
+    putTodo: ({users_id, id, newContent}) => {
+        
     }
 }
 

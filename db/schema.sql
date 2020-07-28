@@ -1,6 +1,6 @@
 BEGIN;
 
-    DROP TABLE IF EXISTS users, warmers, todos, photos CASCADE;
+    DROP TABLE IF EXISTS users, todos, photos CASCADE;
 
     CREATE TABLE users
     (
@@ -12,6 +12,7 @@ BEGIN;
 
     CREATE TABLE todos
     (
+        id SERIAL PRIMARY KEY,
         users_id INTEGER REFERENCES users(id),
         todo TEXT NOT NULL,
         completed BOOLEAN
@@ -19,6 +20,7 @@ BEGIN;
 
     CREATE TABLE photos
     (
+        id SERIAL PRIMARY KEY,
         users_id INTEGER REFERENCES users(id),
         url VARCHAR(255) NOT NULL
     );
