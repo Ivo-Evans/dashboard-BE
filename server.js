@@ -13,6 +13,7 @@ const getTodos = require("./handlers/todos/get-todos.js")
 const postTodos = require("./handlers/todos/post-todos.js")
 const putTodos = require("./handlers/todos/put-todos.js")
 const postPhoto = require("./handlers/photos/post-photo.js")
+const getPhotos = require("./handlers/photos/get-photo")
 
 server.use(express.json());
 server.post("/signup", signup)
@@ -27,7 +28,7 @@ server.use(fileUpload({
     useTempFiles : true,
     tempFileDir : '/tmp/'
 }));
-// server.get("/photo", getPhotos)
+server.get("/photo/", getPhotos)
 server.post("/photo", postPhoto)
 
 server.listen(port, () => {
