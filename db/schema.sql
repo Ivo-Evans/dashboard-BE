@@ -10,13 +10,6 @@ BEGIN;
 	    password_slug VARCHAR(255) NOT NULL
     );
 
-    CREATE TABLE warmers
-    (
-        users_id INTEGER REFERENCES users(id),
-        warmer VARCHAR(255) NOT NULL,
-        date VARCHAR(255) NOT NULL
-    );
-
     CREATE TABLE todos
     (
         users_id INTEGER REFERENCES users(id),
