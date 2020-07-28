@@ -1,11 +1,13 @@
 
-const userModels = require("../db/models/users.js")
+const userModels = require("../../db/models/users.js")
 const bcrypt = require("bcryptjs")
 
 function signup(req, res, next) {
-    if (!req.body.password) {
-        err.statusCode = 400
-        throw new Error(err)
+    const {password, email, username} = req.body
+    if (!(password && email && username)) {
+        const err = new Error("password, email and username are required")
+        err.code = 400
+        return next(err)
      }
     bcrypt
         .genSalt(10)

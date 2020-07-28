@@ -1,12 +1,13 @@
-const userModels = require("../db/models/users.js")
+const userModels = require("../../db/models/users.js")
 const bcrypt = require("bcryptjs")
 const jwt = require('jsonwebtoken');
 
 function login(req, res, next) {
     const { username, password } = req.body
     if (!(username && password)) {
+        const err = new Error("Username and password are both required")
         err.statusCode = 400
-        throw new Error(err)
+        next(err)
      }
 
     userModels.getUser({username})
@@ -18,8 +19,9 @@ function login(req, res, next) {
                         err = {statusCode: 400}
                         throw new Error(err)
                     }
+                    
                     const token = jwt.sign(
-                        { username: username },
+                        { users_id: user.id },
                         process.env.SECRET,
                         { expiresIn: '24h' },
                     );
