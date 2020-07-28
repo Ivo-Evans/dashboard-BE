@@ -8,7 +8,6 @@ const userModels = {
                 throw new Error(err)
             })
     },
-    // getUser will be used for internal operations like logging in, not get requests
     getUser: () => {
         
     }
