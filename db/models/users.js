@@ -4,12 +4,13 @@ const userModels = {
     postUser: ({username, email, password_slug}) => {
         return db
             .query("INSERT INTO USERS(username, email, password_slug) VALUES($1, $2, $3)", [username, email, password_slug])
-            .catch(err => {
-                throw new Error(err)
-            })
     },
-    getUser: () => {
-        
+    getUser: ({username}) => {
+        return db
+            .query("SELECT id, email, password_slug FROM USERS where username = $1", [username])
+            .then(res => {
+                return res.rows[0]
+            })        
     }
 }
 
