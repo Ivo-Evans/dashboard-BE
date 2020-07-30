@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 
 function login(req, res, next) {
     const { username, password } = req.body
-    console.log(req.body)
     if (!(username && password)) {
         const err = new Error("Username and password are both required")
         err.statusCode = 400
@@ -13,7 +12,6 @@ function login(req, res, next) {
 
     userModels.getUser({username})
         .then(user => {
-            console.log(user)
             bcrypt.compare(password, user.password_slug)
                 .then(result => {
                     if (!result) {
@@ -22,7 +20,8 @@ function login(req, res, next) {
                     }
                     
                     const token = jwt.sign(
-                        { users_id: user.id },
+                        { users_id: user.id,
+                        username },
                         process.env.SECRET,
                         { expiresIn: '24h' },
                     );

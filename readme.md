@@ -6,8 +6,10 @@ There are three sets of routes, for authentication, todos and photos
 
 |verb|endpoint|body|returns|
 |-----|-------|----|-------|
-|post|"/login"|JSON containing username and password|JSON with a token key|
+|post|"/login"|JSON containing username and password|JSON with token key|
 | post | "/signup" | JSON containing username, password and email | JSON with a token key |
+
+tokens returned contain, when decoded, exp, iam, user_id and username.
 
 ## TODOs
 

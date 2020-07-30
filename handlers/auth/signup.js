@@ -16,8 +16,9 @@ function signup(req, res, next) {
         .then(password_slug => {
             userModels.postUser({...req.body, password_slug})
                 .then((result) => {
+                    const user = result.rows[0]
                     const token = jwt.sign(
-                        { users_id: result.rows[0].id },
+                        { users_id: user.id, username: user.username },
                         process.env.SECRET,
                         { expiresIn: '24h' },
                     );
