@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 function login(req, res, next) {
     const { username, password } = req.body
+    console.log(req.body)
     if (!(username && password)) {
         const err = new Error("Username and password are both required")
         err.statusCode = 400
@@ -26,11 +27,12 @@ function login(req, res, next) {
                         { expiresIn: '24h' },
                     );
 
-                    res.status(200).send(token)
+                    res.status(200).send({token})
 
                 })
 
         })
+        .catch(next)
 }
 
 module.exports = login

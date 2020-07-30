@@ -1,11 +1,9 @@
 const express = require("express")
-const server = express()
+const cors = require('cors')
 require('dotenv').config();
-const port = process.env.PORT || 5000
-
 const fileUpload = require('express-fileupload')
-const verifyJWT = require("./middleware/verifyJWT.js")
 
+const verifyJWT = require("./middleware/verifyJWT.js")
 
 const signup = require("./handlers/auth/signup.js")
 const login = require("./handlers/auth/login.js")
@@ -15,6 +13,10 @@ const putTodos = require("./handlers/todos/put-todos.js")
 const postPhoto = require("./handlers/photos/post-photo.js")
 const getPhotos = require("./handlers/photos/get-photo")
 
+const port = process.env.PORT || 5000
+const server = express()
+
+server.use(cors())
 server.use(express.json());
 server.post("/signup", signup)
 server.post("/login", login)

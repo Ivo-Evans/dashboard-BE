@@ -21,9 +21,9 @@ function signup(req, res, next) {
                         process.env.SECRET,
                         { expiresIn: '24h' },
                     );
-                    res.status(200).send(token)
+                    res.status(200).send({token})
                 })
-                .catch(next)
         })
+        .catch(next)
 }
 module.exports = signup
