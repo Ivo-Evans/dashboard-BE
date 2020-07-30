@@ -8,7 +8,6 @@ function postPhoto(req, res, next) {
     err.status = 400;
     return next(err);
   }
-  console.log(req.users_id);
   cloudinary.uploader
     .upload(tempFilePath, { tags: req.files.file.name })
     .then((image) => {
@@ -16,16 +15,11 @@ function postPhoto(req, res, next) {
       const { url } = image;
       photoModels
         .postPhoto({ users_id, url })
-        .then((result) => {
+        .then(() => {
           res.status(200).send({ url });
         })
-        .catch((err) => {
-          return next(err);
-        });
     })
-    .catch((err) => {
-      return next(err);
-    });
+    .catch(next);
 }
 
 module.exports = postPhoto;

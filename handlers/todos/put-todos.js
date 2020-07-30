@@ -1,7 +1,6 @@
 const todoModels = require("../../db/models/todos.js")
 
 function putTodo(req, res, next) {
-    // add error handling
     const { users_id, body } = req
     const {id, todo, completed} = body
     if (!(id && todo && completed)) {
