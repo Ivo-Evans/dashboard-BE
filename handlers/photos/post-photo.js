@@ -9,10 +9,14 @@ function postPhoto(req, res, next) {
     return next(err);
   }
   cloudinary.uploader
-    .upload(tempFilePath, { tags: req.files.file.name })
+    .upload(tempFilePath, { tags: req.files.file.name, eager: {
+        width: 280,
+        height: 280,
+        crop: "fit"
+    } })
     .then((image) => {
       const { users_id } = req;
-      const { url } = image;
+      const { url } = image.eager[0]
       photoModels
         .postPhoto({ users_id, url })
         .then(() => {

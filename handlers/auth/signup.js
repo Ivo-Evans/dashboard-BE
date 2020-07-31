@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 
 function signup(req, res, next) {
     const {password, email, username} = req.body
+    console.log({password, email, username})
     if (!(password && email && username)) {
         const err = new Error("password, email and username are required")
         err.code = 400

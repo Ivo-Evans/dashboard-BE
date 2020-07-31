@@ -28,7 +28,7 @@ server.put("/todos", putTodos)
 
 server.use(fileUpload({
     useTempFiles : true,
-    tempFileDir : '/tmp/'
+    tempFileDir : '/tmp/',
 }));
 server.get("/photo/", getPhotos)
 server.post("/photo", postPhoto)
