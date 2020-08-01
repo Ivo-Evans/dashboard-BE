@@ -12,6 +12,7 @@ const postTodos = require("./handlers/todos/post-todos.js")
 const putTodos = require("./handlers/todos/put-todos.js")
 const postPhoto = require("./handlers/photos/post-photo.js")
 const getPhotos = require("./handlers/photos/get-photo")
+const getWarmers = require("./handlers/warmers/get-warmers")
 
 const port = process.env.PORT || 5000
 const server = express()
@@ -25,6 +26,8 @@ server.use(verifyJWT)
 server.get("/todos", getTodos)
 server.post("/todos", postTodos)
 server.put("/todos", putTodos)
+
+server.get("/warmers", getWarmers)
 
 server.use(fileUpload({
     useTempFiles : true,
