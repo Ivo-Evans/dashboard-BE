@@ -7,6 +7,8 @@ const verifyJWT = require("./middleware/verifyJWT.js")
 
 const signup = require("./handlers/auth/signup.js")
 const login = require("./handlers/auth/login.js")
+const getFootbalTeams = require("./handlers/football/get-football-teams")
+
 const getTodos = require("./handlers/todos/get-todos.js")
 const postTodos = require("./handlers/todos/post-todos.js")
 const putTodos = require("./handlers/todos/put-todos.js")
@@ -21,6 +23,8 @@ server.use(cors())
 server.use(express.json());
 server.post("/signup", signup)
 server.post("/login", login)
+
+server.get("/teams", getFootbalTeams)
 
 server.use(verifyJWT)
 server.get("/todos", getTodos)
