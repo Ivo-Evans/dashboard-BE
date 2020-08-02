@@ -6,10 +6,10 @@ const footballModels = {
             `SELECT home_team, away_team FROM football_games`
         ).then(res => res.rows)
     },
-    getVictories: ({team_name}) => {
+    getVictories: ({team}) => {
         return db.query(
-            `SELECT home_team, away_team, result FROM football_teams where home_team = $1 or away_team = $1`
-        )
+            `SELECT home_team, away_team, result FROM football_games where home_team = $1 or away_team = $1`, [team]
+        ).then(res => res.rows)
     }
 }
 

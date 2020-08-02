@@ -1,6 +1,13 @@
 # Therapy Box API docs
 
-These docs contain documentation for the API routes. All routes other than "/login" and "/signup" require a valid JWT provided with the bearer syntax, and grant the caller access to the details of the user specified in the JWT. 
+These docs contain documentation for the API routes. 
+
+## Teams
+
+|verb|endpoint|purpose|body|returns|
+|----|--------|-------|----|-------|
+|GET|"/teams"|List available team names| None | JSON array of strings |
+|GET| "/teams/:team"|Find games won by a specific team|none|JSON array of objects|
 
 ## Authentication
 
@@ -10,6 +17,8 @@ These docs contain documentation for the API routes. All routes other than "/log
 | post | "/signup" | JSON containing username, password and email | JSON with a token key |
 
 tokens returned contain, when decoded, exp, iam, user_id and username.
+
+All routes below this in the documentation require a valid JWT provided with the bearer syntax, and grant the caller access to the details of the user specified in the JWT. 
 
 ## TODOs
 
