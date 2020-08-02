@@ -1,6 +1,6 @@
 BEGIN;
 
-    DROP TABLE IF EXISTS users, warmers, todos, photos, games CASCADE;
+    DROP TABLE IF EXISTS users, warmers, todos, photos, football_games CASCADE;
 
     CREATE TABLE users
     (
