@@ -1,20 +1,13 @@
 BEGIN;
 
-    DROP TABLE IF EXISTS teams, users, warmers, todos, photos CASCADE;
-
-    CREATE TABLE teams
-    (
-        id SERIAL PRIMARY KEY,
-        team VARCHAR(255) NOT NULL UNIQUE
-    );
+    DROP TABLE IF EXISTS users, warmers, todos, photos, games CASCADE;
 
     CREATE TABLE users
     (
         id SERIAL PRIMARY KEY,
   	    username VARCHAR(255) NOT NULL UNIQUE,
 	    email VARCHAR(255) NOT NULL UNIQUE,
-	    password_slug VARCHAR(255) NOT NULL,
-        teams_id INTEGER REFERENCES teams(id)
+	    password_slug VARCHAR(255) NOT NULL
     );
 
     CREATE TABLE warmers
@@ -38,6 +31,14 @@ BEGIN;
         id SERIAL PRIMARY KEY,
         users_id INTEGER REFERENCES users(id),
         url VARCHAR(255) NOT NULL
+    );
+
+    CREATE TABLE football_games
+    (
+        id SERIAL PRIMARY KEY,
+        home_team VARCHAR(255) NOT NULL,
+        away_team VARCHAR(255) NOT NULL,
+        result VARCHAR(1) NOT NULL
     );
 
 COMMIT;

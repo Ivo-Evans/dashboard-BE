@@ -1,5 +1,5 @@
 // This script loads the JSON response into the database to provide some sample data - SOP was enabled in the linked API 
-const db = require("./connection.js");
+const db = require("../connection.js");
 require("dotenv").config()
 const user = 1
 

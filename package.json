@@ -22,7 +22,8 @@
     "pg": "^8.3.0"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^3.2.0"
+    "cz-conventional-changelog": "^3.2.0",
+    "neat-csv": "^5.2.0"
   },
   "config": {
     "commitizen": {
