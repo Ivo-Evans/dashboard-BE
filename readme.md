@@ -1,13 +1,19 @@
-# Therapy Box API docs
+# Dashboard Box API docs
 
-These docs contain documentation for the API routes. 
+These docs contain documentation for the API routes. A colon in a route indicates a variable - you can drop in different values to get diffferent results.
 
 ## Teams
 
 |verb|endpoint|purpose|body|returns|
 |----|--------|-------|----|-------|
 |GET|"/teams"|List available team names| None | JSON array of strings |
-|GET| "/teams/:team"|Find games won by a specific team|none|JSON array of objects|
+|GET| "/teams/:team"|Find games won by a specific team by name|none|JSON array of objects|
+
+## News
+
+|verb|endpoint|purpose|body|returns|
+|----|--------|-------|----|-------|
+|GET|/article/:url| get html for article at a given url | none | html |
 
 ## Authentication
 

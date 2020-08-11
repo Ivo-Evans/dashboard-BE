@@ -15,6 +15,7 @@ const putTodos = require("./handlers/todos/put-todos.js")
 const postPhoto = require("./handlers/photos/post-photo.js")
 const getPhotos = require("./handlers/photos/get-photo")
 const getWarmers = require("./handlers/warmers/get-warmers")
+const getArticle = require("./handlers/news/get-article")
 
 const port = process.env.PORT || 5000
 const server = express()
@@ -27,6 +28,7 @@ server.post("/login", login)
 server.get("/teams/:team", getFootballVictories)
 server.get("/teams", getFootbalTeams)
 
+server.get("/article/*", getArticle)
 
 server.use(verifyJWT)
 server.get("/todos", getTodos)
